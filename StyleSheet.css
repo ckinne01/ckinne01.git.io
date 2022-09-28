@@ -1,0 +1,50 @@
+.navigation {
+  overflow: hidden;
+  background-color: #2B1E00;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+}
+
+.navigation a {
+  float: left;
+  display: block;
+  color: #3F7186;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+body {
+    background-color: #3F7186;
+}
+
+.top {
+    background-size:cover;  
+    height: 200px; 
+     width: 100%; 
+     padding-top: 75px; 
+     box-sizing:border-box; 
+     text-align:center; 
+     font-size:  40px;  
+     z-index:99}
+     
+.content {
+    position:absolute;  
+    top: auto;
+}
+		
+.left-col{
+    font-size: 30px;
+    background-color: inherit; 
+    width: 100%; 
+    display:inline-block;
+    height:700px;
+}
+
+h1 {
+    color: #ffffff;
+    position: inherit;
+    background-image: url(cold-cuts.jpg);
+    background-repeat: no-repeat;
+}
