@@ -9,7 +9,7 @@
 
 <body>
     <script language = "javascript">
-        $.get( "https://ckinne01.github.io/songlist.json",
+        $.getJSON( "https://ckinne01.github.io/songlist.json",
             function(data){
                 document.write("yes");
                 str = JSON.stringify(data)
