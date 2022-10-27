@@ -4,18 +4,14 @@
 <meta charset="utf-8">
 <title>Connor's Songlist</title>
     <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <link rel="icon" href="data:;base64,=">
 </head>
 
 <body>
     <script language = "javascript">
-        $.getJSON( "https://ckinne01.github.io/songlist.json",
-            function(data){
-                document.write("yes");
+        $.get( "https://ckinne01.github.io/songlist.json", function(data){
                 str = JSON.stringify(data)
                 document.write(str + "<br />");
             });
-        document.write("g");
     </script>
     
 </body>
