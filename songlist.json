@@ -1,0 +1,76 @@
+// JSON document
+
+[
+    {
+        "song": "Pool House",
+        "artists": ["The Backstreet Lovers"],
+        "genres": ["Alternative", "Indie"],
+        "release year": "2019" 
+    },
+    {
+        "song": "love.",
+        "artists": ["Kid Cudi"],
+        "genres": ["Hip-Hop", "Rap"],
+        "release year": "2022"
+    },
+    {
+        "song": "Babydoll",
+        "artists": ["Dominic Fike"],
+        "genres": ["Alternative", "Indie"],
+        "release year": "2018"
+    },
+    {
+        "song": "Kings of Summer",
+        "artists": ["ayokay", "Quinn XCII"],
+        "genres": ["Dance", "Electronic"],
+        "release year": "2016"
+    },
+    {
+        "song": "Kilby Girl",
+        "artists": ["The Backstreet Lovers"],
+        "genres": ["Alternative", "Indie"],
+        "release year": "2019"
+    },
+    {
+        "song": "White House Road",
+        "artists": ["Tyler Childers"],
+        "genres": ["Country"],
+        "release year": "2017"
+    },
+    {
+        "song": "Glimpse of Us",
+        "artists": ["Joji"],
+        "genres": ["Pop"],
+        "release year": "2022"
+    },
+    {
+        "song": "Coast (feat. Anderson .Paak)",
+        "artists": ["Hailee Steinfeld", "Anderson .Paak"],
+        "genres": ["Pop"],
+        "release year": "2022"
+    },
+    {
+        "song": "Heat Waves (with iann dior)",
+        "artists": ["Glass Animals", "iann dior"],
+        "genres": ["Pop"],
+        "release year": "2022"
+    },
+    {
+        "song": "Levitating (feat. DaBaby)",
+        "artists": ["Dua Lipa", "DaBaby"],
+        "genres": ["Disco", "Electro"],
+        "release year": "2020"
+    },
+    {
+        "song": "More Than Friends",
+        "artists": ["Aidan Bissett"],
+        "genres": ["Alternative", "Indie"],
+        "release year": "2021"
+    },
+    {
+        "song": "American Dream",
+        "artists": ["Bryce Vine"],
+        "genres": ["Hip-Hop", "Rap"],
+        "release year": "2022"
+    }
+]
