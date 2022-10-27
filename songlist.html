@@ -7,11 +7,103 @@
 </head>
 
 <body>
+    <h1 id = "title">Connor's Songlist</h1>
+    <form id = "genres" onsubmit="doForm()">
+        <label for = "genre">Choose a genre:</label>
+        <select id="genre" name="genre">
+            <option value="alternative">Alternative</option>
+            <option value="indie">Indie</option>
+            <option value="hip-hop">Hip-Hop</option>
+            <option value="rap">Rap</option>
+            <option value="dance">Dance</option>
+            <option value="electronic">Electronic</option>
+            <option value="country">Country</option>
+            <option value="pop">Pop</option>
+            <option value="disco">Disco</option>
+            <option value="Electro">Electro</option>
+        </select>
+        <input type="submit">
+    </form>
+    <div id = "content"><div>
     <script language = "javascript">
         $.get( "https://ckinne01.github.io/songlist.json", function(data){
-                str = JSON.stringify(data)
-                document.write(str + "<br />");
+                writeJson(data);
             });
+        function doForm(){
+            var x = document.getElementById("genre");
+            var genre = x.options[x.selectedIndex].text;
+            $.get( "https://ckinne01.github.io/songlist.json", function(data){
+                    var genres = [];
+                    for (i = 0; i < Object.keys(data).length; i++){
+                        for (j = 0; j < data[i].genres.length; j++){
+                            if (data[i].genres[j] == genre){
+                                genres.push(data[i])
+                            }
+                        }
+                    }
+                    for (i = 0; i < Object.keys(genres).length; i++){
+                        document.write (genres[i].song + "<br />");
+                        if (genres[i].artists.length == 1) {
+                            document.write ("Artist: " + genres[i].artists[0]); 
+                        }else {
+                            document.write ("Artists: ")
+                            for (j = 0; j < genres[i].artists.length; j++){
+                                document.write (" " + genres[i].artists[j]);
+                                if (j != genres[i].artists.length - 1){
+                                    document.write (",")
+                                }
+                            }
+                        }
+                        document.write ("<br />")
+                        if (genres[i].genres.length == 1) {
+                            document.write ("Genre: " + genres[i].genres[0]); 
+                        }else {
+                            document.write ("Genres: ")
+                            for (j = 0; j < genres[i].genres.length; j++){
+                                document.write (" " + genres[i].genres[j]);
+                                if (j != genres[i].genres.length - 1){
+                                    document.write (",")
+                                }
+                            }
+                        }
+                        document.write ("<br />Release year: " + genres[i].release)
+                        document.write ("<br /><br />")
+                    }
+                });
+        }
+        function writeJson(data){
+            str = JSON.stringify(data);
+            document.getElementById("content").innerHTML += (str + "<br /><br />");
+            objs = JSON.parse(str);
+            for (i = 0; i < Object.keys(objs).length; i++){
+                document.getElementById("content").innerHTML += (objs[i].song + "<br />");
+                if (objs[i].artists.length == 1) {
+                    document.getElementById("content").innerHTML += ("Artist: " + objs[i].artists[0]); 
+                }else {
+                    document.getElementById("content").innerHTML += ("Artists: ")
+                    for (j = 0; j < objs[i].artists.length; j++){
+                        document.getElementById("content").innerHTML += (" " + objs[i].artists[j]);
+                        if (j != objs[i].artists.length - 1){
+                            document.getElementById("content").innerHTML += (",")
+                        }
+                    }
+                }
+                document.getElementById("content").innerHTML += ("<br />")
+                if (objs[i].genres.length == 1) {
+                    document.getElementById("content").innerHTML += ("Genre: " + objs[i].genres[0]); 
+                }else {
+                    document.getElementById("content").innerHTML += ("Genres: ")
+                    for (j = 0; j < objs[i].genres.length; j++){
+                        document.getElementById("content").innerHTML += (" " + objs[i].genres[j]);
+                        if (j != objs[i].genres.length - 1){
+                            document.getElementById("content").innerHTML += (",")
+                        }
+                    }
+                }
+                document.getElementById("content").innerHTML += ("<br />Release year: " + objs[i].release)
+                document.getElementById("content").innerHTML += ("<br /><br />")
+            }
+        }    
     </script>
     
 </body>
