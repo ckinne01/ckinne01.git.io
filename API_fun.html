@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <h1>API Fun</h1>
+    <script>
+        function getData(){
+            // Creating an instance of request object 
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+            
+            // Set the URL for the AJAX request to the JSON
+            
+            request.open("GET", "https://api.apilayer.com/spotify/search?q=Pool%20House&apikey=y9nCdkn9dXaHSwhA1WGNr4IVftQMUGg6", true);
+            console.log("2 - opened requested file");
+            
+            // Set up event handler/callback
+            
+            request.onreadystatechange = function () {
+                console.log("3 - readystatechange event fired");
+                
+                if (request.readyState == 4 && request.status == 200){
+                    // wait for done + success
+                    console.log("5 - response received");
+                    result = request.responseText;
+                    myDisplay("data", result)
+                }
+            
+                else if (request.readyState == 4 && request.status != 200) {
+
+                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+                }
+
+                else if (request.readyState == 3) {
+
+                    console.log("Too soon!  Try again");
+
+                }
+            }
+            request.send();
+            console.log("4 - Request sent")
+        }
+        // Fetch request for data 
+        var myHeaders = new Headers();
+        // Setting headers for the fetch call 
+        myHeaders.append("apikey", "y9nCdkn9dXaHSwhA1WGNr4IVftQMUGg6");
+        
+        // Setting the methods for the request
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow',
+          headers: myHeaders
+        };
+        
+        // Fetching the data 
+        fetch("https://api.apilayer.com/spotify/search?q=Pool%20House", requestOptions)
+          .then(response => response.text())
+          .then(result => myDisplay("fetchdata", result))
+          .catch(error => console.log('error', error))
+         
+        //Function to disply the data from the API for both styles of getting 
+        // the data
+        function myDisplay(id, data){
+            songs = JSON.parse(data);
+            document.getElementById(id).innerHTML += "Song name: " + songs["albums"]["items"][0]["data"]["name"] + "<br />"
+            document.getElementById(id).innerHTML += "Artist: " + songs["albums"]["items"][0]["data"]["artists"]["items"][0]["profile"]["name"] + "<br />"
+            document.getElementById(id).innerHTML += "Artist Spotify ID: " + songs["albums"]["items"][0]["data"]["artists"]["items"][0]["uri"] + "<br />"
+            document.getElementById(id).innerHTML += "Release year: " + songs["albums"]["items"][0]["data"]["date"]["year"] + "<br /><br />"
+        }
+          
+    </script>
+</head>
+
+<body onload = "getData()">
+    <div id = "data">Get data using AJAX<br /><br /></div>
+    <div id = "fetchdata">Get data using fetch<br /><br /></div>
+    <p>The API that I selected is a database of Spotify data. It includes data 
+        on songs, playlists, artists, and more. I found the API on a website 
+        called apilayer.com. I signed up for an account for free and it gave me
+        a free key to access the database. The only option that I used for this
+        API request were my key and the name of the song that I wanted to search
+        for. This API would be useful to find data on the most popular songs
+        that people are listening to or how frequently certain albums are
+        listened to.
+    </p>
+</html>
